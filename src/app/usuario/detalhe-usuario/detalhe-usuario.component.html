@@ -1,0 +1,9 @@
+<h2>Detalhe do Usuario</h2>
+<div class="container main-container" *ngIf='usuario'>
+  <div class="jumbotron">
+    <h3>Nome: {{ usuario.nome }}</h3>
+    <h5>Sigla: {{ usuario.sigla }}</h5>
+    <h5>Setor: {{ usuario.setor }}</h5>
+  </div>
+  <a [routerLink]="['/usuarios/lista-usuarios']" class="btn btn-primary">Voltar para a lista</a>
+</div>

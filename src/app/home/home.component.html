@@ -1,0 +1,8 @@
+<div class="jumbotron text-center">
+  <h1>Servcom - Sistema de Gerenciamento de Atendimento</h1>
+  <div *ngIf='usuarioLogado()'>
+    <a class="btn btn-primary btn-lg btn-block"> Atendimentos</a><br>
+    <a class="btn btn-primary btn-lg btn-block"> Configuração</a><br>
+    <a [routerLink]="['/usuarios/lista-usuarios']" class="btn btn-primary btn-lg btn-block"> Usuarios</a><br>
+  </div>
+</div>

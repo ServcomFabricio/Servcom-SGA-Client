@@ -1,0 +1,42 @@
+<h2>Lista de Usuarios</h2>
+<div class="row">
+  <div class="col-md-12">
+    <div class="pull-left">
+      <a class="btn btn-primary" [routerLink]="['/usuarios/incluir']">
+        <span title="Novo Usuario" class="glyphicon glyphicon-plus-sign"></span>Novo Usuário
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="page-size">
+  <div class="panel padel-default">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Sigla</th>
+          <th>Setor</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let usuario of usuarios'>
+          <td>{{usuario.nome}}</td>
+          <td>{{usuario.sigla}}</td>
+          <td>{{usuario.setor}}</td>
+          <td> <a [routerLink]="['/usuarios/detalhes',usuario.id]" title="Detalhes" class="btn btn-primary">
+            <span class="glyphicon glyphicon-search"></span>
+          </a> &nbsp;
+          <a [routerLink]="['/usuarios/editar',usuario.id]" title="Editar" class="btn btn-warning">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </a> &nbsp;
+          <a [routerLink]="['/usuarios/excluir',usuario.id]" title="excluir" class="btn btn-danger">
+            <span class="glyphicon glyphicon-trash"></span>
+          </a>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>
