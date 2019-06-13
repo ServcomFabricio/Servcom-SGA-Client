@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { MenuSuperiorComponent } from './menu-superior/menu-superior.component';
 import { MenuLoginComponent } from './menu-login/menu-login.component';
@@ -15,7 +16,8 @@ import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.componen
     imports:[
         CommonModule,
         CollapseModule,
-        RouterModule
+        RouterModule,
+        BsDropdownModule
     ],
     declarations:[
         MenuSuperiorComponent,

@@ -10,5 +10,6 @@ export const rootRouterConfig: Routes=[
     {path:'entrar',component:LoginComponent},
     { path: 'acesso-negado', component: AcessoNegadoComponent },
     { path: 'nao-encontrado', component: NaoEncontradoComponent },
-    { path: 'usuarios', loadChildren: './usuario/usuario.module#UsuarioModule' }
+    { path: 'usuarios', loadChildren: './usuario/usuario.module#UsuarioModule' },
+    { path: 'atendimentos', loadChildren: './atendimentos/atendimento.module#AtendimentoModule' },
 ];

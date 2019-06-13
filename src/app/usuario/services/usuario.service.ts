@@ -17,7 +17,7 @@ export class UsuarioService extends ServiceBase {
     
     loginUsuario(usuario: Usuario): Observable<Usuario> {
         return this.http
-            .post(this.UrlServiceV1 + "user/login-usuario", usuario, super.obterHeaderJson())
+            .post(this.UrlServiceV1 + "login-usuario", usuario, super.obterHeaderJson())
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError)
@@ -27,7 +27,7 @@ export class UsuarioService extends ServiceBase {
 
     incluirUsuario(usuario: Usuario): Observable<Usuario> {
         return this.http
-            .post(this.UrlServiceV1 + "user/novo-usuario", usuario, super.obterAuthHeaderJson())
+            .post(this.UrlServiceV1 + "novo-usuario", usuario, super.obterAuthHeaderJson())
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError)
@@ -37,7 +37,7 @@ export class UsuarioService extends ServiceBase {
 
     atualizarUsuario(usuario: Usuario): Observable<Usuario> {
         return  this.http
-            .put(this.UrlServiceV1 + "user/editar-usuario", usuario, super.obterAuthHeaderJson())
+            .put(this.UrlServiceV1 + "editar-usuario", usuario, super.obterAuthHeaderJson())
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError)
@@ -46,7 +46,7 @@ export class UsuarioService extends ServiceBase {
 
     excluirUsuario(id: string): Observable<Usuario> {
         return this.http
-            .delete(this.UrlServiceV1 + "user/excluir-usuario/" + id, super.obterAuthHeaderJson())
+            .delete(this.UrlServiceV1 + "excluir-usuario/" + id, super.obterAuthHeaderJson())
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
@@ -55,14 +55,14 @@ export class UsuarioService extends ServiceBase {
 
     obterUsuarios(): Observable<Usuario[]> {
         return this.http
-            .get<Usuario[]>(this.UrlServiceV1 + "user/lista-usuarios", super.obterAuthHeaderJson())
+            .get<Usuario[]>(this.UrlServiceV1 + "lista-usuarios", super.obterAuthHeaderJson())
             .pipe(
                 catchError(super.serviceError));
     }
 
     obterUsuario(id: string): Observable<Usuario> {
         return this.http
-            .get<Usuario>(this.UrlServiceV1 + "user/obter-usuario/" + id, super.obterAuthHeaderJson())
+            .get<Usuario>(this.UrlServiceV1 + "obter-usuario/" + id, super.obterAuthHeaderJson())
             .pipe(
                 catchError(super.serviceError));
     }

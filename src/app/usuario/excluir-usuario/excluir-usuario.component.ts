@@ -16,13 +16,10 @@ import { SeoService } from 'src/app/services/seo.service';
   styleUrls: ['./excluir-usuario.component.css']
 })
 export class ExcluirUsuarioComponent extends BaseComponet implements OnInit {
-  @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
+  
 
-  public sub: Subscription;
   public usuarioId: string;
   public usuario: Usuario;
-  public errors: any[] = [];
-  isDataAvailable: boolean = false;
   
   constructor(fb: FormBuilder,
     route: ActivatedRoute,

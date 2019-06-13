@@ -15,6 +15,7 @@ import { rootRouterConfig } from './app.routers';
 
 //3s tools
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ToastrModule } from 'ngx-toastr';
 import { CustomFormsModule } from 'ng2-validation';
 
@@ -32,6 +33,8 @@ import { ErrorInterceptor } from './services/erro.handker.service';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { UsuarioService } from './usuario/services/usuario.service';
+import { DataSharingService } from './services/service.base';
+import { TipoAtendimentoService } from './atendimentos/services/tipoatendimento.service';
 
 
 @NgModule({
@@ -49,6 +52,7 @@ import { UsuarioService } from './usuario/services/usuario.service';
     BrowserAnimationsModule,
     HttpClientModule,
     CollapseModule.forRoot(),
+    BsDropdownModule.forRoot(), 
     ToastrModule.forRoot(),
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
   ],
@@ -56,6 +60,8 @@ import { UsuarioService } from './usuario/services/usuario.service';
     Title,
     SeoService,
     UsuarioService,
+    TipoAtendimentoService,
+    DataSharingService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,

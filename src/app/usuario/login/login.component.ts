@@ -12,6 +12,7 @@ import { GenericValidator } from 'src/app/utils/generic.form.validator';
 import { Usuario } from 'src/app/usuario/models/usuario';
 import { SeoService, SeoModel } from 'src/app/services/seo.service';
 import { UsuarioService } from '../services/usuario.service';
+import { DataSharingService } from 'src/app/services/service.base';
 
 
 @Component({
@@ -36,7 +37,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
     private router: Router,
     private toastr: ToastrService,
     private usuarioService:UsuarioService,
-    seoService:SeoService) {
+    seoService:SeoService,
+    private dataSharingService: DataSharingService) {
     let seoModel:SeoModel=<SeoModel>{
       title:"Realize seu login"
     }
@@ -74,11 +76,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   realizarLogin() {
-
     if (this.loginForm.dirty && this.loginForm.valid) {
-
       let user = Object.assign({}, this.usuario, this.loginForm.value);
-
       this.usuarioService.loginUsuario(user)
         .subscribe(
           result => { this.onSaveComplete(result) },
@@ -93,9 +92,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.errors = [];
 
     this.usuarioService.setLocalStorage(response.access_token, JSON.stringify(response.user))
-    
+    this.dataSharingService.usuarioNome.next(response.user.nome);
     const toastrMessage = this.toastr.success('Login realizado com sucesso', 'Bem Vindo!');
-    if (toastrMessage){
+    if (toastrMessage) {
       toastrMessage.onHidden.subscribe(()=>{
         this.router.navigate(['/home']);
       });

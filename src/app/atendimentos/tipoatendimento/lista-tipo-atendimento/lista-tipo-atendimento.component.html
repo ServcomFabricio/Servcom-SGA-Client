@@ -1,0 +1,44 @@
+<h2>Lista de Tipo de Atendimento</h2>
+<div class="row">
+  <div class="col-md-12">
+    <div class="pull-left">
+      <a class="btn btn-primary" [routerLink]="['/atendimentos/tipo-atendimento/incluir']">
+        <span title="Adicionar Tipo" class="glyphicon glyphicon-plus-sign"></span>Adicionar Tipo
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="page-size">
+  <div class="panel padel-default">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Descrição</th>
+          <th>Gerar Senha de Prioridade?</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let tipoAtendimento of tiposAtendimento'>
+          <td>{{tipoAtendimento.tipo}}</td>
+          <td>{{tipoAtendimento.descricao}}</td>
+          <td [ngSwitch]='tipoAtendimento.prioritario'>
+            <span *ngSwitchCase='true' class="glyphicon glyphicon-ok"></span>
+            <span *ngSwitchCase='false' class="glyphicon glyphicon-unchecked"></span>
+          </td>
+          <td>
+          <a [routerLink]="['/atendimentos/tipo-atendimento/editar',tipoAtendimento.id]" title="Editar" class="btn btn-warning">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </a> &nbsp;
+          <a [routerLink]="['/atendimentos/tipo-atendimento/excluir',tipoAtendimento.id]" title="excluir" class="btn btn-danger">
+            <span class="glyphicon glyphicon-trash"></span>
+          </a>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+</div>

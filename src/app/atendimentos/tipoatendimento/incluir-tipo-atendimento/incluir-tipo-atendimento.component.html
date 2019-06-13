@@ -1,0 +1,58 @@
+<div class="container">
+  <h2>Cadastro Tipo Atendimetno</h2>
+
+
+  <form novalidate (ngSubmit)="incluirTipoAtendimento()" [formGroup]="incluirTipoAtendimentoForm">
+
+    <div class="form-horizontal">
+
+      <div class="alert alert-danger" *ngIf="errors.length > 0">
+        <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+        <ul>
+          <li *ngFor="let error of errors">{{ error }}</li>
+        </ul>
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error': displayMessage.tipo }">
+        <label class="col-md-2 control-label" for="tipo">Tipo</label>
+        <div class="col-md-10">
+          <input class="form-control" id="tipo" type="text" placeholder="tipo (requerido)" formControlName="tipo" />
+          <span class="text-danger" *ngIf="displayMessage.tipo">
+            <p [innerHTML]="displayMessage.tipo"></p>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error': displayMessage.descricao }">
+        <label class="col-md-2 control-label" for="descricao">Descricao</label>
+        <div class="col-md-10">
+          <input class="form-control" id="descricao" type="text" placeholder="descricao (requerido)" formControlName="descricao" />
+          <span class="text-danger" *ngIf="displayMessage.descricao">
+            <p [innerHTML]="displayMessage.descricao"></p>
+          </span>
+        </div>
+      </div>
+
+
+      <div class="form-group" [ngClass]="{'has-error': displayMessage.prioritario }">
+          <div class="col-md-offset-2 col-md-10">
+            <div class="checkbox">
+              <input type="checkbox" name="prioritario" id="prioritario" [(ngModel)]="prioritario" formControlName="prioritario">
+              <label for="prioritario">Gera senha de prioridade ?</label>
+              <span class="text-danger" *ngIf="displayMessage.prioritario">
+                <p [innerHTML]="displayMessage.prioritario"></p>
+            </span>
+            </div>
+          </div>
+        </div>
+
+      <div class="form-group">
+        <div class="col-md-4 col-md-offset-2">
+          <button class="btn btn-success" id="Registrar" type="submit" [disabled]='!incluirTipoAtendimentoForm.valid'>Registrar</button>
+          <a [routerLink]="['/atendimentos/tipo-atendimento/listar']" class="btn btn-primary">Voltar para a lista</a>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>

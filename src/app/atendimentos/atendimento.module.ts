@@ -1,0 +1,59 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
+//services
+import { SeoService } from '../services/seo.service';
+import { ErrorInterceptor } from '../services/erro.handker.service';
+
+//shared modules
+import { SharedModule } from '../shared/shared.module';
+
+
+import { atendimentosRouterConfig } from './atendimento.routes';
+import { ListaTipoAtendimentoComponent } from './tipoatendimento/lista-tipo-atendimento/lista-tipo-atendimento.component';
+import { AtendimentoComponent } from './atendimento.component';
+import { IncluirTipoAtendimentoComponent } from './tipoatendimento/incluir-tipo-atendimento/incluir-tipo-atendimento.component';
+import { UsuarioAuthorize } from '../usuario/services/usuario.authorize';
+import { EditarTipoAtendimentoComponent } from './tipoatendimento/editar-tipo-atendimento/editar-tipo-atendimento.component';
+import { ExcluirTipoAtendimentoComponent } from './tipoatendimento/excluir-tipo-atendimento/excluir-tipo-atendimento.component';
+
+
+
+
+
+@NgModule({
+    imports: [
+        SharedModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        RouterModule.forChild(atendimentosRouterConfig),
+    ],
+    declarations: [
+        AtendimentoComponent,
+        ListaTipoAtendimentoComponent,
+        IncluirTipoAtendimentoComponent,
+        EditarTipoAtendimentoComponent,
+        ExcluirTipoAtendimentoComponent
+        
+    ],
+    providers: [
+        Title,
+        SeoService,
+        UsuarioAuthorize,
+          {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorInterceptor,
+            multi: true
+          }
+    ],
+    exports: [
+        RouterModule
+    ]
+})
+export class AtendimentoModule { }

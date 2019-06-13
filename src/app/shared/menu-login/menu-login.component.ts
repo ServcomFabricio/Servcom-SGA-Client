@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/usuario/services/usuario.service';
+import { DataSharingService } from 'src/app/services/service.base';
 
 
 
@@ -15,14 +16,20 @@ export class MenuLoginComponent {
   public nome: string = "";
 
   constructor(private usuarioService: UsuarioService,
-    private router: Router) { }
+    private dataSharingService: DataSharingService,
+    private router: Router,) {
+      
+     }
 
-  usuarioLogado() {
+  public usuarioLogado() {
     this.token = this.usuarioService.getUserToken();
     this.user = JSON.parse(this.usuarioService.getUser());
     if (this.user)
       this.nome = this.user.nome;
-
+      this.dataSharingService.usuarioNome.subscribe(
+        usuarioNome=>{this.nome=usuarioNome}
+      );
+      
     return this.token !== null
   }
 

@@ -1,4 +1,4 @@
-.navbar-brand .order-md-last{
+.navbar-brand .order-md-last {
     width: 150px;
     font-size: 20px;
 }
@@ -9,10 +9,35 @@
     align-content: flex-start;
 }
 
-.navbar-default {
+.navbar-inverse {
     background-color: #3941A1;
     border-color: #3941A1;
     height: 55px;
-    
 }
 
+.navbar-collapse {
+    background-color: #3941A1;
+    border-color: #3941A1;
+}
+
+#btn {
+    background-color: #3941A1;
+}
+
+.btn-primary {
+    background-color: #3941A1;
+    width: 150px;
+}
+
+.btn-group {
+    padding: 10px;
+}
+
+.dropdown-menu {
+    margin: 0;
+    list-style: none;
+    white-space: nowrap;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: #ffffff;
+}

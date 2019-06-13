@@ -1,9 +1,15 @@
 import { HttpHeaders } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { throwError, BehaviorSubject } from 'rxjs';
+import { Injectable } from '@angular/core';
 
 export abstract class ServiceBase {
 
-    protected UrlServiceV1: string = '/api/';
+    //Produção
+    //TODO: Liberar para produção
+    //protected UrlServiceV1: string = 'http://192.168.0.19:5000/api/';
+
+    //dev
+    protected UrlServiceV1: string = 'https://localhost:44384/';
 
     protected obterHeaderJson() {
         return {
@@ -58,4 +64,12 @@ export abstract class ServiceBase {
         localStorage.removeItem('sga.user');
 
     }
+}
+
+
+@Injectable()
+export class DataSharingService extends ServiceBase{
+    getUser=JSON.parse(this.getUser());
+    userNome:string=this.getUser==null?"":this.getUser.nome;
+    public usuarioNome: BehaviorSubject<string> = new BehaviorSubject<string>(this.userNome);
 }

@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { SeoService } from '../services/seo.service';
 import { UsuarioService } from './services/usuario.service';
 import { UsuarioAuthorize } from './services/usuario.authorize';
+import { ErrorInterceptor } from '../services/erro.handker.service';
 
 //router
 import { usuariosRouterConfig } from './usuario.routes';
@@ -22,7 +23,6 @@ import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.componen
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { DetalheUsuarioComponent } from './detalhe-usuario/detalhe-usuario.component';
 import { ExcluirUsuarioComponent } from './excluir-usuario/excluir-usuario.component';
-import { ErrorInterceptor } from '../services/erro.handker.service';
 import { IncluirUsuarioComponent } from './incluir-usuario/incluir-usuario.component';
 
 @NgModule(

@@ -10,6 +10,7 @@ import { BaseComponet } from 'src/app/utils/base.compent';
 import { SeoService } from 'src/app/services/seo.service';
 import { GenericValidator } from 'src/app/utils/generic.form.validator';
 import { UsuarioService } from '../services/usuario.service';
+import { DataSharingService } from 'src/app/services/service.base';
 
 
 @Component({
@@ -23,13 +24,15 @@ export class EditarUsuarioComponent extends BaseComponet implements OnInit,After
   public editarUsuarioForm: FormGroup;
   public usuario: Usuario;
   public usuarioId: string = "";
+  public user;
 
   constructor(fb:FormBuilder,
     route: ActivatedRoute,
      router: Router,
      toastr: ToastrService,
      seoService: SeoService,
-     private usuarioService:UsuarioService) {
+     private usuarioService:UsuarioService,
+     private dataSharingService: DataSharingService) {
        super(fb,route,router,toastr,seoService,"Editar usuário");
 
        this.validationMessagens = {
@@ -97,8 +100,11 @@ export class EditarUsuarioComponent extends BaseComponet implements OnInit,After
 
   editarUsuario() {
     if (this.editarUsuarioForm.dirty && this.editarUsuarioForm.valid) {
+      this.user = JSON.parse(this.usuarioService.getUser());
       let edUser = Object.assign({}, this.usuario, this.editarUsuarioForm.value);
-      
+      if (this.user.id == this.usuario.id) {
+        this.dataSharingService.usuarioNome.next(edUser.nome);
+      }
       this.usuarioService.atualizarUsuario(edUser)
         .subscribe(
           result => { this.onSaveComplete('Usuário atualizado com sucesso','/usuarios/lista-usuarios',this.editarUsuarioForm) },
