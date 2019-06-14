@@ -20,6 +20,8 @@ import { IncluirTipoAtendimentoComponent } from './tipoatendimento/incluir-tipo-
 import { UsuarioAuthorize } from '../usuario/services/usuario.authorize';
 import { EditarTipoAtendimentoComponent } from './tipoatendimento/editar-tipo-atendimento/editar-tipo-atendimento.component';
 import { ExcluirTipoAtendimentoComponent } from './tipoatendimento/excluir-tipo-atendimento/excluir-tipo-atendimento.component';
+import { PainelAtendimentoComponent } from './painel-atendimento/painel-atendimento.component';
+import { SignalRService } from './services/signalR.service';
 
 
 
@@ -39,13 +41,15 @@ import { ExcluirTipoAtendimentoComponent } from './tipoatendimento/excluir-tipo-
         ListaTipoAtendimentoComponent,
         IncluirTipoAtendimentoComponent,
         EditarTipoAtendimentoComponent,
-        ExcluirTipoAtendimentoComponent
+        ExcluirTipoAtendimentoComponent,
+        PainelAtendimentoComponent
         
     ],
     providers: [
         Title,
         SeoService,
         UsuarioAuthorize,
+        SignalRService,
           {
             provide: HTTP_INTERCEPTORS,
             useClass: ErrorInterceptor,

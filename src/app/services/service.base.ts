@@ -72,4 +72,6 @@ export class DataSharingService extends ServiceBase{
     getUser=JSON.parse(this.getUser());
     userNome:string=this.getUser==null?"":this.getUser.nome;
     public usuarioNome: BehaviorSubject<string> = new BehaviorSubject<string>(this.userNome);
+
+    public menuSuperiorAtivo: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 }

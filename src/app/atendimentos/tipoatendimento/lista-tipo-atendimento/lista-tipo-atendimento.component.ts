@@ -7,6 +7,7 @@ import { TipoAtendimento } from '../../models/tipoatendimento';
 
 
 
+
 @Component({
   selector: 'app-lista-tipo-atendimento',
   templateUrl: './lista-tipo-atendimento.component.html',
@@ -23,6 +24,7 @@ export class ListaTipoAtendimentoComponent implements OnInit {
       title: "lista Tipos Atendimentos "
     }
     seoService.setSeoData(seoModel);
+
   }
 
   ngOnInit() {

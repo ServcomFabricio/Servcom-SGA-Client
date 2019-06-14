@@ -1,0 +1,71 @@
+<div class="page-size" *ngIf='signalRService.dataResponse'>
+  <div class="panel padel-default">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Senha {{signalRService.dataResponse[0].senha}}</th>
+          <th>Guinche</th>
+          <th>Prioridade?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let atendimento of signalRService.dataResponse; let i=index' > 
+          <td *ngIf='i > 0'>{{i}},{{atendimento.senha}}</td>
+          <td>{{atendimento.guiche}}</td>
+          <td [ngSwitch]='atendimento.prioritario'>
+            <span *ngSwitchCase='true' class="glyphicon glyphicon-ok"></span>
+            <span *ngSwitchCase='false' class="glyphicon glyphicon-unchecked"></span>
+          </td>
+          
+        </tr>
+      </tbody>
+
+    </table>
+
+    
+  </div>
+</div>
+
+
+<div id="panelMidia" class="panel panel-primary col-lg-6">
+  <div class="panel-body" >
+    <span id="valorMidia" >midia</span>
+  </div>
+</div>
+
+
+
+<div id="panelSenha" class="panel panel-primary col-lg-6">
+  <div class="panel-heading col-lg-12">Senha</div>
+  <div class="panel-body" >
+    <span id="valorSenha" >PRT0005</span>
+    <span id="valorguinche">Guiche:<br>PRT0005</span>
+  </div>
+</div>
+
+
+<div id="panelUltimasSenhas" class="panel panel-primary col-lg-6">
+  <div class="panel-heading col-lg-12">Ultimas Chamadas</div>
+  <div class="panel-body" id="valorUltimasSenhas" >
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Senha</th>
+          <th>Guiche</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PRT0004</td>
+          <td>05</td>
+        </tr>
+        <tr>
+          <td>PRT0003</td>
+          <td>07</td>
+        </tr>
+      </tbody>
+
+    </table>
+    <a [routerLink]="['/usuarios/lista-usuarios']" class="btn btn-primary">Voltar para a lista</a>
+  </div>
+</div>

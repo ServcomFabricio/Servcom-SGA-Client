@@ -29,12 +29,15 @@
             <span *ngSwitchCase='false' class="glyphicon glyphicon-unchecked"></span>
           </td>
           <td>
-          <a [routerLink]="['/atendimentos/tipo-atendimento/editar',tipoAtendimento.id]" title="Editar" class="btn btn-warning">
-            <span class="glyphicon glyphicon-pencil"></span>
-          </a> &nbsp;
-          <a [routerLink]="['/atendimentos/tipo-atendimento/excluir',tipoAtendimento.id]" title="excluir" class="btn btn-danger">
-            <span class="glyphicon glyphicon-trash"></span>
-          </a>
+            <a [routerLink]="['/atendimentos/tipo-atendimento/editar',tipoAtendimento.id]" title="Editar"
+              class="btn btn-warning">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </a> &nbsp;
+            <a [routerLink]="['/atendimentos/tipo-atendimento/excluir',tipoAtendimento.id]" title="excluir"
+              class="btn btn-danger">
+              <span class="glyphicon glyphicon-trash"></span>
+            </a>
+          </td>
         </tr>
       </tbody>
 
