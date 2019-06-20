@@ -5,11 +5,11 @@ import { Injectable } from '@angular/core';
 export abstract class ServiceBase {
 
     //Produção
-    //TODO: Liberar para produção
+    //TODO: Liberar para produção Raspberry
     //protected UrlServiceV1: string = 'http://192.168.0.19:5000/api/';
 
     //dev
-    protected UrlServiceV1: string = 'https://localhost:44384/';
+    protected UrlServiceV1: string = 'https://192.168.0.24:8003/';
 
     protected obterHeaderJson() {
         return {

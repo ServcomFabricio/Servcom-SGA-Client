@@ -1,71 +1,52 @@
-<div class="page-size" *ngIf='signalRService.dataResponse'>
-  <div class="panel padel-default">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Senha {{signalRService.dataResponse[0].senha}}</th>
-          <th>Guinche</th>
-          <th>Prioridade?</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor='let atendimento of signalRService.dataResponse; let i=index' > 
-          <td *ngIf='i > 0'>{{i}},{{atendimento.senha}}</td>
-          <td>{{atendimento.guiche}}</td>
-          <td [ngSwitch]='atendimento.prioritario'>
-            <span *ngSwitchCase='true' class="glyphicon glyphicon-ok"></span>
-            <span *ngSwitchCase='false' class="glyphicon glyphicon-unchecked"></span>
-          </td>
-          
-        </tr>
-      </tbody>
+<div class="container-fluid">
 
-    </table>
+  <div class="row border border-dark">
+    <div class="col-md-4 no-float">
+      <div class="well text-center">
+        <h3> 6º Registro de Imóveis de Belo Horizonte</h3>
+      </div>
+      <div class="well text-center">
+        <h1>Senha<br>{{signalRService.dataResponse[0].senha}}</h1>
+        <h2>Guiche<br>{{signalRService.dataResponse[0].guiche}}</h2>
+      </div>
+      <div id="ultimasSenhas" class="well text-center">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Senha</th>
+              <th>Guiche</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let atendimento of signalRService.dataResponse|slice:1 '>
+              <td>{{atendimento.senha}}</td>
+              <td>{{atendimento.guiche}}</td>
+            </tr>
+          </tbody>
 
-    
-  </div>
-</div>
+        </table>
+      </div>
+      <div class="well text-center">
+        <h4>{{ time | date: 'dd/MM/yyy - HH:mm:ss ' }}</h4>
 
+      </div>
 
-<div id="panelMidia" class="panel panel-primary col-lg-6">
-  <div class="panel-body" >
-    <span id="valorMidia" >midia</span>
-  </div>
-</div>
-
-
-
-<div id="panelSenha" class="panel panel-primary col-lg-6">
-  <div class="panel-heading col-lg-12">Senha</div>
-  <div class="panel-body" >
-    <span id="valorSenha" >PRT0005</span>
-    <span id="valorguinche">Guiche:<br>PRT0005</span>
-  </div>
-</div>
+    </div>
+    <div class="col-md-8 no-float">
+      <div id="webcam">
+        <webcam [height]="550" [width]="720" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+          *ngIf="showWebcam" [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+          [videoOptions]="videoOptions" [imageQuality]="1" (cameraSwitched)="cameraWasSwitched($event)"
+          (initError)="handleInitError($event)"></webcam>
+      </div>
+      <div id="textoFixo" class="well text-center">
 
 
-<div id="panelUltimasSenhas" class="panel panel-primary col-lg-6">
-  <div class="panel-heading col-lg-12">Ultimas Chamadas</div>
-  <div class="panel-body" id="valorUltimasSenhas" >
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Senha</th>
-          <th>Guiche</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>PRT0004</td>
-          <td>05</td>
-        </tr>
-        <tr>
-          <td>PRT0003</td>
-          <td>07</td>
-        </tr>
-      </tbody>
-
-    </table>
-    <a [routerLink]="['/usuarios/lista-usuarios']" class="btn btn-primary">Voltar para a lista</a>
+      </div>
+      <div id="copyRight" >
+          <span > <a [routerLink]="['/home']" class="glyphicon glyphicon-chevron-left"></a>© 2019 Servcom Serviços de
+            Computação </span>
+        </div>
+    </div>
   </div>
 </div>

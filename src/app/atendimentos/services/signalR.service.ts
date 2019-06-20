@@ -10,8 +10,8 @@ import { PainelAtendimentoModel } from '../models/painelatendimento';
 export class SignalRService extends ServiceBase {
 
     private hubConnection: signalR.HubConnection
-    public dataResponse: PainelAtendimentoModel[];
-    constructor(private http: HttpClient) { super() }
+    public dataResponse: PainelAtendimentoModel[]=[new PainelAtendimentoModel()];
+    constructor() { super() }
 
     public startConnection = () => {
         this.hubConnection = new signalR.HubConnectionBuilder()
@@ -21,14 +21,21 @@ export class SignalRService extends ServiceBase {
         this.hubConnection
             .start()
             .then()
-            .catch(super.serviceError)
+            .catch(super.serviceError);
+            
     }
 
     public addTransferChartDataListener = () => {
         this.hubConnection.on('painelAtendimento', data => {
             this.dataResponse=data;
-            console.log(data);
+            this.playAudio();
         });
     }
-
+ 
+    playAudio(){
+        let audio = new Audio();
+        audio.src = '../assets/som.mp3';
+        audio.load();
+        audio.play();
+      }
 }

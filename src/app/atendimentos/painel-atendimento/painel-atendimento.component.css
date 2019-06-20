@@ -1,69 +1,54 @@
-#panelMidia {
-    top: 50px;
-    width: 550px;
-    right:50px;
-    position: absolute;
-    background: lightblue;
-    font-size: 30px;
-    text-align: center;
-  }
-
-  
- #valorMidia{
-    height: 350px;
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-
- } 
-
-#panelSenha {
-    top: 50px;
-    left: 50px;
-    position: absolute;
-    background: lightblue;
-    font-size: 30px;
-    text-align: center;
-  }
-
- #valorSenha{
-    font-size: 120px;
-    height: 150px;
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-
- } 
-
- #valorguinche{
-    font-size: 50px;
-    display: inline-block;
-    vertical-align: middle;
-    float: none;   
- }
-
- #panelUltimasSenhas {
-    top: 440px;
-    left: 50px;
-    position: absolute;
-    background: lightblue;
-    font-size: 30px;
-    text-align: center;
-    
-  }
-
- #valorUltimasSenhas{
-    font-size: 20px;
-    height: 180px;
-    background: lightblue;
-    display: inline-block;
+.container-fluid
+{
+    height:100vh;
+    display:table;
     width: 100%;
- } 
-
- td {
-    background: lightblue;
-    text-align: left;
+    margin-top: -50px;
+    padding: 50px 0 0 0; 
+}
+header
+{
+    background: green;
+    height: 50px;
 }
 
- 
+.row
+{
+   width: 100vh;
+   display: table-row;
+}
 
+.col-md-4 {   
+    border: 1px solid black;
+    height: 100vh;
+   background-image: linear-gradient(rgb(23, 23, 114), rgb(112, 157, 216));
+   overflow: hidden;
+}
+.col-md-8 {
+   height: 100vh;
+   border: 1px solid black;
+   background-image: linear-gradient(rgb(23, 23, 114), rgb(112, 157, 216));
+   overflow: hidden;
+}
+
+#webcam{
+  height: 550px;
+  width: 720px;
+}
+
+.well h1 {
+   font-size: 50px;
+}
+#ultimasSenhas{
+   height: 230px;
+}
+
+#textoFixo{
+   height: 200px;
+}
+
+#copyRight {
+   position: fixed;
+   text-align: right;
+   bottom: 0;
+}

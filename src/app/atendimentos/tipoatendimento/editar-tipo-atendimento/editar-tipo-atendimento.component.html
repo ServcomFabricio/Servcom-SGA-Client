@@ -37,7 +37,7 @@
         <div class="form-group" [ngClass]="{'has-error': displayMessage.prioritario }">
             <div class="col-md-offset-2 col-md-10">
               <div class="checkbox">
-                <input type="checkbox" name="prioritario" id="prioritario" [(ngModel)]="prioritario" formControlName="prioritario">
+                <input type="checkbox" name="prioritario" id="prioritario" formControlName="prioritario">
                 <label for="prioritario">Gera senha de prioridade ?</label>
                 <span class="text-danger" *ngIf="displayMessage.prioritario">
                   <p [innerHTML]="displayMessage.prioritario"></p>

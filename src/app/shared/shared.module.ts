@@ -10,6 +10,7 @@ import { MenuLoginComponent } from './menu-login/menu-login.component';
 import { MainPrincipalComponent } from './main-principal/main-principal.component';
 import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
 import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -24,14 +25,16 @@ import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.componen
         MenuLoginComponent,
         MainPrincipalComponent,
         AcessoNegadoComponent,
-        NaoEncontradoComponent
+        NaoEncontradoComponent,
+        FooterComponent
     ],
     exports:[
         MenuSuperiorComponent,
         MenuLoginComponent,
         MainPrincipalComponent,
         AcessoNegadoComponent,
-        NaoEncontradoComponent
+        NaoEncontradoComponent,
+        FooterComponent
     ]
 }) 
 export class SharedModule {}

@@ -13,15 +13,16 @@ import { PainelAtendimentoComponent } from './painel-atendimento/painel-atendime
 
 
 
-export const atendimentosRouterConfig:Routes=[
+export const atendimentosRouterConfig: Routes = [
     {
-        path:'',component:AtendimentoComponent,
-        children:[
+        path: '', component: AtendimentoComponent,
+        children: [
             { path: '', component: AtendimentoComponent },
             { path: 'tipo-atendimento/listar', canActivate: [UsuarioAuthorize], component: ListaTipoAtendimentoComponent, data: [{ claim: { nome: 'Atendimentos', valor: 'Gravar' } }] },
             { path: 'tipo-atendimento/incluir', canActivate: [UsuarioAuthorize], component: IncluirTipoAtendimentoComponent, data: [{ claim: { nome: 'Atendimentos', valor: 'Gravar' } }] },
             { path: 'tipo-atendimento/editar/:id', canActivate: [UsuarioAuthorize], component: EditarTipoAtendimentoComponent, data: [{ claim: { nome: 'Atendimentos', valor: 'Gravar' } }] },
-            { path: 'painel-atendimento', component:PainelAtendimentoComponent},
+            { path: 'tipo-atendimento/excluir/:id', canActivate: [UsuarioAuthorize], component: ExcluirTipoAtendimentoComponent, data: [{ claim: { nome: 'Atendimentos', valor: 'Gravar' } }] },
+            { path: 'painel-atendimento', component: PainelAtendimentoComponent },
         ]
     }
 ]

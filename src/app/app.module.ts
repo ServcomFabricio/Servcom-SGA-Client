@@ -15,12 +15,12 @@ registerLocaleData(localePt);
 //routes
 import { rootRouterConfig } from './app.routers';
 
-
 //3s tools
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ToastrModule } from 'ngx-toastr';
 import { CustomFormsModule } from 'ng2-validation';
+import {WebcamModule} from 'ngx-webcam';
 
 //components
 import { AppComponent } from './app.component';
@@ -54,6 +54,7 @@ import { TipoAtendimentoService } from './atendimentos/services/tipoatendimento.
     CustomFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    WebcamModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(), 
     ToastrModule.forRoot(),

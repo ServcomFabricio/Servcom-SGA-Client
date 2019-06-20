@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import {WebcamModule} from 'ngx-webcam';
 
 //services
 import { SeoService } from '../services/seo.service';
@@ -34,6 +35,7 @@ import { SignalRService } from './services/signalR.service';
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        WebcamModule,
         RouterModule.forChild(atendimentosRouterConfig),
     ],
     declarations: [
