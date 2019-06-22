@@ -6,7 +6,7 @@ export abstract class ServiceBase {
 
     //Produção
     //TODO: Liberar para produção Raspberry
-    //protected UrlServiceV1: string = 'http://192.168.0.19:5000/api/';
+    //protected UrlServiceV1: string = 'http://192.168.0.24:8003';
 
     //dev
     protected UrlServiceV1: string = 'https://192.168.0.24:8003/';

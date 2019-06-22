@@ -10,7 +10,10 @@ import { PainelAtendimentoModel } from '../models/painelatendimento';
 export class SignalRService extends ServiceBase {
 
     private hubConnection: signalR.HubConnection
-    public dataResponse: PainelAtendimentoModel[]=[new PainelAtendimentoModel()];
+    public dataResponse: PainelAtendimentoModel[] = [new PainelAtendimentoModel()];
+    time: number = 0;
+    interval;
+    public blinkSenha: boolean = true
     constructor() { super() }
 
     public startConnection = () => {
@@ -22,20 +25,37 @@ export class SignalRService extends ServiceBase {
             .start()
             .then()
             .catch(super.serviceError);
-            
+
     }
 
     public addTransferChartDataListener = () => {
         this.hubConnection.on('painelAtendimento', data => {
-            this.dataResponse=data;
+            this.dataResponse = data;
+            this.startBlink();
             this.playAudio();
         });
     }
- 
-    playAudio(){
+
+    playAudio() {
         let audio = new Audio();
         audio.src = '../assets/som.mp3';
         audio.load();
         audio.play();
-      }
+    }
+
+    startBlink() {
+        this.interval = setInterval(() => {
+            this.blinkSenha = !this.blinkSenha;
+            this.time++;
+            if (this.time > 10) {
+                this.pauseBlick();
+                this.time = 0;
+            }
+        }, 200)
+    }
+
+    pauseBlick() {
+        clearInterval(this.interval);
+        this.blinkSenha = true;
+    }
 }

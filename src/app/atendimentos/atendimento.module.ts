@@ -23,9 +23,7 @@ import { EditarTipoAtendimentoComponent } from './tipoatendimento/editar-tipo-at
 import { ExcluirTipoAtendimentoComponent } from './tipoatendimento/excluir-tipo-atendimento/excluir-tipo-atendimento.component';
 import { PainelAtendimentoComponent } from './painel-atendimento/painel-atendimento.component';
 import { SignalRService } from './services/signalR.service';
-
-
-
+import { EntradaVideoComponent } from './entrada-video/entrada-video.component';
 
 
 @NgModule({
@@ -44,7 +42,8 @@ import { SignalRService } from './services/signalR.service';
         IncluirTipoAtendimentoComponent,
         EditarTipoAtendimentoComponent,
         ExcluirTipoAtendimentoComponent,
-        PainelAtendimentoComponent
+        PainelAtendimentoComponent,
+        EntradaVideoComponent
         
     ],
     providers: [

@@ -22,7 +22,6 @@
           </button>
           <ul id="dropdown-atendimento" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
             <li role="menuitem"><a class="dropdown-item" href="#">Dashboard</a></li>
-            <li role="menuitem"><a class="dropdown-item" href="#">Alterar Sequencia </a></li>
             <li class="divider dropdown-divider"></li>
             <li role="menuitem"><a class="dropdown-item"  [routerLink]="['/atendimentos/tipo-atendimento/listar']">Cadastro Tipo de Atendimento</a>
             </li>
@@ -38,7 +37,7 @@
             Configuração <span class="caret"></span>
           </button>
           <ul id="dropdown-configuracao" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-            <li role="menuitem"><a class="dropdown-item" href="#">Cadastro Geral</a></li>
+            <li role="menuitem"><a class="dropdown-item" [routerLink]="['/configuracoes/configuracao-geral']" >Cadastro Geral</a></li>
           </ul>
         </div>
       </div>

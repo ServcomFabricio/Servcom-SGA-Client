@@ -1,12 +1,17 @@
 <div class="container-fluid">
-
   <div class="row border border-dark">
     <div class="col-md-4 no-float">
       <div class="well text-center">
         <h3> 6º Registro de Imóveis de Belo Horizonte</h3>
       </div>
       <div class="well text-center">
-        <h1>Senha<br>{{signalRService.dataResponse[0].senha}}</h1>
+        <h1>Senha<br>
+          <span [ngSwitch]='signalRService.blinkSenha'>
+              <span *ngSwitchCase='true'>{{signalRService.dataResponse[0].senha}}</span>
+              <span *ngSwitchCase='false'>&nbsp;</span>
+          </span>
+        
+        </h1>
         <h2>Guiche<br>{{signalRService.dataResponse[0].guiche}}</h2>
       </div>
       <div id="ultimasSenhas" class="well text-center">
@@ -33,20 +38,16 @@
 
     </div>
     <div class="col-md-8 no-float">
-      <div id="webcam">
-        <webcam [height]="550" [width]="720" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
-          *ngIf="showWebcam" [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
-          [videoOptions]="videoOptions" [imageQuality]="1" (cameraSwitched)="cameraWasSwitched($event)"
-          (initError)="handleInitError($event)"></webcam>
+      <div>
+        <app-entrada-video></app-entrada-video>
       </div>
+
       <div id="textoFixo" class="well text-center">
-
-
       </div>
-      <div id="copyRight" >
-          <span > <a [routerLink]="['/home']" class="glyphicon glyphicon-chevron-left"></a>© 2019 Servcom Serviços de
-            Computação </span>
-        </div>
+      <div id="copyRight">
+        <span> <a [routerLink]="['/home']" class="glyphicon glyphicon-chevron-left"></a>© 2019 Servcom Serviços de
+          Computação </span>
+      </div>
     </div>
   </div>
 </div>

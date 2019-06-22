@@ -1,0 +1,12 @@
+<div class="basic-demo">
+  <fieldset>
+    <legend>{{editorTextoService.tituloEditor}}</legend>
+    <ck-editor
+    [(config)]="editorTextoService.configEditor"
+      [(ngModel)]="editorTextoService.htmlContentEditor"
+      #ckEditor="ckEditor"
+      language='pt-br'
+      skin="moono-lisa"></ck-editor>
+  </fieldset>
+</div>  
+

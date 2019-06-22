@@ -48,7 +48,8 @@ export class IncluirTipoAtendimentoComponent extends BaseComponet implements OnI
     this.incluirTipoAtendimentoForm = this.fb.group({
       tipo: ['', [Validators.required, CustomValidators.rangeLength([3, 4])]],
       descricao: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
-      prioritario:''
+      prioritario:false
+      
     });
   }
 

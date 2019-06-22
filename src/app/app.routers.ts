@@ -12,4 +12,5 @@ export const rootRouterConfig: Routes=[
     { path: 'nao-encontrado', component: NaoEncontradoComponent },
     { path: 'usuarios', loadChildren: './usuario/usuario.module#UsuarioModule' },
     { path: 'atendimentos', loadChildren: './atendimentos/atendimento.module#AtendimentoModule' },
+    { path: 'configuracoes', loadChildren: './configuracoes/configuracao.module#ConfiguracaoModule' },
 ];
