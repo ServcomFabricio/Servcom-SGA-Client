@@ -13,6 +13,7 @@ export class SignalRService extends ServiceBase {
     public dataResponse: PainelAtendimentoModel[] = [new PainelAtendimentoModel()];
     time: number = 0;
     interval;
+    break;
     public blinkSenha: boolean = true
     constructor() { super() }
 
@@ -33,6 +34,7 @@ export class SignalRService extends ServiceBase {
             this.dataResponse = data;
             this.startBlink();
             this.playAudio();
+   
         });
     }
 
@@ -48,14 +50,15 @@ export class SignalRService extends ServiceBase {
             this.blinkSenha = !this.blinkSenha;
             this.time++;
             if (this.time > 10) {
-                this.pauseBlick();
-                this.time = 0;
+               this.pauseBlick();
             }
-        }, 200)
+        }, 200);
+                 
     }
 
     pauseBlick() {
         clearInterval(this.interval);
+        this.time = 0;
         this.blinkSenha = true;
     }
 }

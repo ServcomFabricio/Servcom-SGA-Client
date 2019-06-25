@@ -1,13 +1,11 @@
-import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
+import { Component, OnInit, OnDestroy, Inject, ViewEncapsulation } from '@angular/core';
+import { DOCUMENT, DomSanitizer } from '@angular/platform-browser';
 
-import { Subject, Observable, interval, timer } from 'rxjs';
-
-import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
 import { SignalRService } from '../services/signalR.service';
 
 import { DataSharingService } from 'src/app/services/service.base';
-
+import { ConfiguracaoService } from 'src/app/configuracoes/services/configuracao.service';
+import { Configuracao } from 'src/app/configuracoes/models/configuracao';
 
 
 
@@ -17,17 +15,20 @@ import { DataSharingService } from 'src/app/services/service.base';
   templateUrl: './painel-atendimento.component.html',
   styleUrls: ['./painel-atendimento.component.css']
 })
-
-
-
 export class PainelAtendimentoComponent implements OnInit,OnDestroy {
   time = new Date();
   elem;
+  public configuracao:Configuracao
+
   constructor(public signalRService: SignalRService,
               private dataSharingService: DataSharingService,
+              private configuracaoGeralService:ConfiguracaoService,
+              private sanitizer: DomSanitizer,
               @Inject(DOCUMENT) private document: any) {
     this.dataSharingService.menuSuperiorAtivo.next(false);  
     this.elem = document.documentElement;
+    this.configuracao= new Configuracao();
+    this.obterConfiguracao()
    }
 
   ngOnInit() {
@@ -39,6 +40,18 @@ export class PainelAtendimentoComponent implements OnInit,OnDestroy {
       this.time = new Date();
    }, 1000);
 
+
+  }
+
+  obterConfiguracao() {
+    this.configuracaoGeralService.obterConfiguracao()
+      .subscribe(
+        configuracao => {
+         this.configuracao=configuracao
+         this.configuracao.textoFixoPainelAtendimento=this.sanitizer.bypassSecurityTrustHtml(configuracao.textoFixoPainelAtendimento);
+        }
+
+      );
   }
 
 
@@ -65,7 +78,7 @@ export class PainelAtendimentoComponent implements OnInit,OnDestroy {
   
    closeFullScreen() {
     if (this.document.exitFullscreen) {
-      this.document.exitFullscreen();
+      this.document.webkitExitFullscreen();
     } else if (this.document.mozCancelFullScreen) {
       /* Firefox */
       this.document.mozCancelFullScreen();

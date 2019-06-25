@@ -18,6 +18,7 @@ import { ErrorInterceptor } from '../services/erro.handker.service';
 
 import { ConfiguracaoComponent } from './configuracao.component';
 import { ConfiguracaoHomeComponent } from './configuracao-home/configuracao-home.component';
+import { ConfiguracaoService } from './services/configuracao.service';
 
 
 
@@ -39,6 +40,7 @@ import { ConfiguracaoHomeComponent } from './configuracao-home/configuracao-home
         Title,
         SeoService,
         UsuarioAuthorize,
+        ConfiguracaoService,
           {
             provide: HTTP_INTERCEPTORS,
             useClass: ErrorInterceptor,

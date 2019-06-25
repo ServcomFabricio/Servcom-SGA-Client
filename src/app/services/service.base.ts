@@ -1,15 +1,21 @@
 import { HttpHeaders } from '@angular/common/http';
-import { throwError, BehaviorSubject } from 'rxjs';
+import { throwError, BehaviorSubject, config } from 'rxjs';
 import { Injectable } from '@angular/core';
+import Config from '../../assets/config.json'
+import { environment } from '../../environments/environment';
 
 export abstract class ServiceBase {
 
-    //Produção
-    //TODO: Liberar para produção Raspberry
-    //protected UrlServiceV1: string = 'http://192.168.0.24:8003';
-
-    //dev
-    protected UrlServiceV1: string = 'https://192.168.0.24:8003/';
+    
+    protected UrlServiceV1:any;
+    
+    constructor(){
+        if (environment.production==true){
+            this.UrlServiceV1=Config.UrlServiceBase;
+        }else{
+            this.UrlServiceV1=Config.UrlServiceBase; //'http://localhost:58300/'
+        }
+    }
 
     protected obterHeaderJson() {
         return {

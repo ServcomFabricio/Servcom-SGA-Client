@@ -9,21 +9,25 @@ import {WebcamModule} from 'ngx-webcam';
 //services
 import { SeoService } from '../services/seo.service';
 import { ErrorInterceptor } from '../services/erro.handker.service';
+import { ConfiguracaoService } from '../configuracoes/services/configuracao.service';
+import { SignalRService } from './services/signalR.service';
+import { UsuarioAuthorize } from '../usuario/services/usuario.authorize';
 
 //shared modules
 import { SharedModule } from '../shared/shared.module';
 
-
+// routes
 import { atendimentosRouterConfig } from './atendimento.routes';
+
+//component
 import { ListaTipoAtendimentoComponent } from './tipoatendimento/lista-tipo-atendimento/lista-tipo-atendimento.component';
 import { AtendimentoComponent } from './atendimento.component';
 import { IncluirTipoAtendimentoComponent } from './tipoatendimento/incluir-tipo-atendimento/incluir-tipo-atendimento.component';
-import { UsuarioAuthorize } from '../usuario/services/usuario.authorize';
 import { EditarTipoAtendimentoComponent } from './tipoatendimento/editar-tipo-atendimento/editar-tipo-atendimento.component';
 import { ExcluirTipoAtendimentoComponent } from './tipoatendimento/excluir-tipo-atendimento/excluir-tipo-atendimento.component';
 import { PainelAtendimentoComponent } from './painel-atendimento/painel-atendimento.component';
-import { SignalRService } from './services/signalR.service';
 import { EntradaVideoComponent } from './entrada-video/entrada-video.component';
+
 
 
 @NgModule({
@@ -50,6 +54,7 @@ import { EntradaVideoComponent } from './entrada-video/entrada-video.component';
         Title,
         SeoService,
         UsuarioAuthorize,
+        ConfiguracaoService,
         SignalRService,
           {
             provide: HTTP_INTERCEPTORS,

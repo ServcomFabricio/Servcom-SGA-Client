@@ -1,12 +1,35 @@
-<div class="basic-demo">
-  <fieldset>
-    <legend>{{editorTextoService.tituloEditor}}</legend>
-    <ck-editor
-    [(config)]="editorTextoService.configEditor"
-      [(ngModel)]="editorTextoService.htmlContentEditor"
-      #ckEditor="ckEditor"
-      language='pt-br'
-      skin="moono-lisa"></ck-editor>
-  </fieldset>
-</div>  
+<form (ngSubmit)="atualizaConfiguracaoGeral()" [formGroup]="tituloPainelAtendimentoForm" *ngIf="isDataAvailable">
 
+  <div class="form-horizontal">
+
+    <div class="form-group" [ngClass]="{'has-error': displayMessage.tituloPainelAtendimento }">
+      <label class="col-md-2 control-label" for="tituloPainelAtendimento">Titulo Painel de Atendimento</label>
+      <div class="col-md-10">
+        <input class="form-control" id="tituloPainelAtendimento" type="text" placeholder="Titulo (requerido)"
+          formControlName="tituloPainelAtendimento" />
+        <span class="text-danger" *ngIf="displayMessage.tituloPainelAtendimento">
+          <p [innerHTML]="displayMessage.tituloPainelAtendimento"></p>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-error': displayMessage.textoFixoPainelAtendimento }">
+      <div class="basic-demo">
+        <legend>{{editorTextoService.tituloEditor}}</legend>
+        <ck-editor [(config)]="editorTextoService.configEditor" [(ngModel)]="editorTextoService.htmlContentEditor"
+          #ckEditor="ckEditor" language='pt-br' skin="moono-lisa" id="textoFixoPainelAtendimento"
+          formControlName="textoFixoPainelAtendimento"></ck-editor>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-md-4 col-md-offset-2">
+        <button class="btn btn-success" id="Registrar" type="submit"
+          [disabled]='!tituloPainelAtendimentoForm.valid'>Atualizar</button>
+        <a [routerLink]="['/home']" class="btn btn-primary">Voltar</a>
+      </div>
+    </div>
+
+  </div>
+</form>
