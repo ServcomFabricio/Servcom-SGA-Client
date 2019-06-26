@@ -75,7 +75,7 @@ export class ConfiguracaoHomeComponent extends BaseComponet implements OnInit, A
   }
 
   preencherFormConfiguracao(configuracao) {
-    this.configuracao = configuracao;
+    this.configuracao = configuracao|| new Configuracao();
     this.tituloPainelAtendimentoForm.patchValue({
       tituloPainelAtendimento: this.configuracao.tituloPainelAtendimento
     });

@@ -1,5 +1,5 @@
 
 export class Configuracao {
-    tituloPainelAtendimento:string;
-    textoFixoPainelAtendimento:any;
+    tituloPainelAtendimento:string="";
+    textoFixoPainelAtendimento:any="";
 }
