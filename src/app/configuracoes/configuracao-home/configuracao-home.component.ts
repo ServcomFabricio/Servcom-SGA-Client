@@ -45,7 +45,9 @@ export class ConfiguracaoHomeComponent extends BaseComponet implements OnInit, A
       },
       textoFixoPainelAtendimento: {
         required: 'Informe o texto fixo do painel de atendimento'
-      }
+      },
+      entradaVideo:{},
+      conteudoConfigurado:{}
     }
     this.genericValidator = new GenericValidator(this.validationMessagens);
     this.configuracao = new Configuracao();
@@ -58,7 +60,9 @@ export class ConfiguracaoHomeComponent extends BaseComponet implements OnInit, A
   ngOnInit() {
     this.tituloPainelAtendimentoForm = this.fb.group({
       tituloPainelAtendimento: ['', [Validators.required]],
-      textoFixoPainelAtendimento: ''
+      textoFixoPainelAtendimento: '',
+      entradaVideo:false,
+      conteudoConfigurado:false
     });
     this.obterConfiguracao()
   }
@@ -77,7 +81,9 @@ export class ConfiguracaoHomeComponent extends BaseComponet implements OnInit, A
   preencherFormConfiguracao(configuracao) {
     this.configuracao = configuracao|| new Configuracao();
     this.tituloPainelAtendimentoForm.patchValue({
-      tituloPainelAtendimento: this.configuracao.tituloPainelAtendimento
+      tituloPainelAtendimento: this.configuracao.tituloPainelAtendimento,
+      entradaVideo: this.configuracao.entradaVideo,
+      conteudoConfigurado: this.configuracao.conteudoConfigurado
     });
     this.editorTextoService.htmlContentEditor=this.configuracao.textoFixoPainelAtendimento
   }

@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="isDataAvailable">
   <div class="row border border-dark">
     <div class="col-md-4 no-float">
       <div class="well text-center">
@@ -8,10 +8,10 @@
       <div class="well text-center">
         <h1>Senha<br>
           <span [ngSwitch]='signalRService.blinkSenha'>
-              <span *ngSwitchCase='true'>{{signalRService.dataResponse[0].senha}}</span>
-              <span *ngSwitchCase='false'>&nbsp;</span>
+            <span *ngSwitchCase='true'>{{signalRService.dataResponse[0].senha}}</span>
+            <span *ngSwitchCase='false'>&nbsp;</span>
           </span>
-        
+
         </h1>
         <h2>Guiche<br>{{signalRService.dataResponse[0].guiche}}</h2>
       </div>
@@ -38,13 +38,20 @@
       </div>
 
     </div>
-    <div class="col-md-8 no-float">
-      <div>
-        <app-entrada-video></app-entrada-video>
+    <div  class="col-md-8 no-float" >
+     <div class="well center">
+        <carousel [(interval)]='intervalo' [showIndicators]='showIndicators' (activeSlideChange)="carouselChange($event)" >
+          <slide id="conteudoSlide" *ngIf="configuracao.entradaVideo">
+            <app-entrada-video></app-entrada-video>
+          </slide>
+          <slide id="conteudoSlide" *ngFor="let conteudoConfigurado of conteudosConfigurado" >
+          <img id="conteudoSlide" [src]="conteudoConfigurado.conteudo" alt="Conteudo Configurado" *ngIf="conteudoConfigurado.tipo==1"/> 
+          <div id="conteudoSlide" *ngIf="conteudoConfigurado.tipo==0"  [innerHTML]="conteudoConfigurado.conteudo | safeHtml"></div> 
+          </slide>
+        </carousel>
       </div>
 
       <div id="textoFixo" class="well" [innerHTML]="configuracao.textoFixoPainelAtendimento">
-
       </div>
       <div id="copyRight">
         <span> <a [routerLink]="['/home']" class="glyphicon glyphicon-chevron-left"></a>© 2019 Servcom Serviços de

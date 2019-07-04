@@ -1,0 +1,55 @@
+<h2>Lista de Conteúdo Cadastrados</h2>
+<div class="row">
+  <div class="col-md-12">
+    <div class="pull-left">
+      <a class="btn btn-primary" [routerLink]="['/configuracoes/conteudo/incluir']">
+        <span title="Adicionar Tipo" class="glyphicon glyphicon-plus-sign"></span>Adicionar Conteúdo
+      </a> &nbsp;
+  <a [routerLink]="['/home']" class="btn btn-primary">Voltar </a>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-size">
+  <div class="panel padel-default">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Tipo</th>
+          <th>Ativo</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let conteudo of conteudosConfigurado'>
+          <td>{{conteudo.descricao}}</td>
+          <td [ngSwitch]='conteudo.tipo'>
+            <span *ngSwitchCase='0' class="glyphicon glyphicon-text-size"></span>
+            <span *ngSwitchCase='1' class="glyphicon glyphicon-picture"></span>
+          </td>
+          <td [ngSwitch]='conteudo.ativo'>
+            <span *ngSwitchCase='true' class="glyphicon glyphicon-ok"></span>
+            <span *ngSwitchCase='false' class="glyphicon glyphicon-unchecked"></span>
+          </td>
+           <td>
+              <td> <a [routerLink]="['/configuracoes/conteudo/detalhes',conteudo.id]" title="Detalhes" class="btn btn-primary">
+                <span class="glyphicon glyphicon-search"></span>
+              </a> &nbsp;
+            <a [routerLink]="['/configuracoes/conteudo/editar',conteudo.id]" title="Editar"
+              class="btn btn-warning">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </a> &nbsp;
+            <a [routerLink]="['/configuracoes/conteudo/excluir',conteudo.id]" title="excluir"
+              class="btn btn-danger">
+              <span class="glyphicon glyphicon-trash"></span>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+</div>

@@ -6,14 +6,16 @@ import { catchError, map } from 'rxjs/operators';
 
 import { ServiceBase } from 'src/app/services/service.base';
 import { Usuario } from '../models/usuario';
+import { ConfigService } from 'ngx-envconfig';
 
 
 
 @Injectable()
 export class UsuarioService extends ServiceBase {
 
-    constructor(private http: HttpClient) { super() }
-
+    constructor(private http: HttpClient,configService: ConfigService) { super(configService)
+        
+    }
     
     loginUsuario(usuario: Usuario): Observable<Usuario> {
         return this.http

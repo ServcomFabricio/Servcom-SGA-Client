@@ -21,18 +21,18 @@ export class ListaTipoAtendimentoComponent implements OnInit {
   constructor(seoService: SeoService,
     private tipoAtendimentoService: TipoAtendimentoService) {
     let seoModel: SeoModel = <SeoModel>{
-      title: "lista Tipos Atendimentos "
+      title: "Lista Tipos Atendimentos "
     }
     seoService.setSeoData(seoModel);
 
   }
 
   ngOnInit() {
-  this.tipoAtendimentoService.obterTipos()
-  .subscribe(
-    tipoAtendimentos=> this.tiposAtendimento=tipoAtendimentos,
-    error=>this.erroMessage=error
-  );
+    this.tipoAtendimentoService.obterTipos()
+      .subscribe(
+        tipoAtendimentos => this.tiposAtendimento = tipoAtendimentos,
+        error => this.erroMessage = error
+      );
   }
 
 

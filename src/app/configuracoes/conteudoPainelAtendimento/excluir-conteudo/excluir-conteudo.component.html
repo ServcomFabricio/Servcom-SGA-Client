@@ -1,0 +1,26 @@
+<h2>Excluir Conteúdo Configurado</h2>
+<div class="container main-container" *ngIf='isDataAvailable'>
+  <div class="jumbotron">
+    <h3><b>Descrição: </b> {{ conteudoConfigurado.descricao }}</h3>
+    <h5 [ngSwitch]='conteudoConfigurado.tipo'><b>Tipo:</b> 
+      <span *ngSwitchCase='0' class="glyphicon glyphicon-text-size"> Texto HTML</span>
+      <span *ngSwitchCase='1' class="glyphicon glyphicon-picture"> Imagem</span>
+    </h5>
+    <h5 [ngSwitch]='conteudoConfigurado.ativo'><b>Status:</b> 
+      <span *ngSwitchCase='true'>Ativo</span>
+      <span *ngSwitchCase='false'>Desabilitado</span>
+    </h5>
+    <div  >
+       <img id="detalheConteudo" [src]="conteudoConfigurado.conteudo" alt="Conteudo Configurado" *ngIf="conteudoConfigurado.tipo==1"/> 
+       <div id="detalheConteudo" *ngIf="conteudoConfigurado.tipo==0"  [innerHTML]="conteudoRender"></div> 
+    </div>
+ 
+  </div>
+  <form novalidate (ngSubmit)="excluirConteudo()">
+      <div class="form-actions no-color">
+          <input type="submit" value="Excluir" class="btn btn-danger" />
+          <a [routerLink]="['/configuracoes/conteudo/listar']" class="btn btn-primary">Voltar para a lista</a>
+      </div>
+  </form>
+  
+</div>

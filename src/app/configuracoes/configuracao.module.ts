@@ -5,7 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-import {NgxEditorModule } from 'ngx-editor';
 import { CKEditorModule } from 'ngx-ckeditor';
 
 import { configuracoesRouterConfig } from './configuracao.routes';
@@ -15,10 +14,15 @@ import { SharedModule } from '../shared/shared.module';
 import { SeoService } from '../services/seo.service';
 import { UsuarioAuthorize } from '../usuario/services/usuario.authorize';
 import { ErrorInterceptor } from '../services/erro.handker.service';
+import { ConfiguracaoService } from './services/configuracao.service';
 
 import { ConfiguracaoComponent } from './configuracao.component';
 import { ConfiguracaoHomeComponent } from './configuracao-home/configuracao-home.component';
-import { ConfiguracaoService } from './services/configuracao.service';
+import { ListaConteudoComponent } from './conteudoPainelAtendimento/lista-conteudo/lista-conteudo.component';
+import { IncluirConteudoComponent } from './conteudoPainelAtendimento/incluir-conteudo/incluir-conteudo.component';
+import { EditarConteudoComponent } from './conteudoPainelAtendimento/editar-conteudo/editar-conteudo.component';
+import { DetalheConteudoComponent } from './conteudoPainelAtendimento/detalhe-conteudo/detalhe-conteudo.component';
+import { ExcluirConteudoComponent } from './conteudoPainelAtendimento/excluir-conteudo/excluir-conteudo.component';
 
 
 
@@ -34,7 +38,12 @@ import { ConfiguracaoService } from './services/configuracao.service';
     ],
     declarations: [
         ConfiguracaoComponent,
-        ConfiguracaoHomeComponent
+        ConfiguracaoHomeComponent,
+        ListaConteudoComponent,
+        IncluirConteudoComponent,
+        EditarConteudoComponent,
+        DetalheConteudoComponent,
+        ExcluirConteudoComponent
     ],
     providers: [
         Title,

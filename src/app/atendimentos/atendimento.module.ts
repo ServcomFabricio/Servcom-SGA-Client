@@ -16,6 +16,9 @@ import { UsuarioAuthorize } from '../usuario/services/usuario.authorize';
 //shared modules
 import { SharedModule } from '../shared/shared.module';
 
+//3s module
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 // routes
 import { atendimentosRouterConfig } from './atendimento.routes';
 
@@ -27,6 +30,7 @@ import { EditarTipoAtendimentoComponent } from './tipoatendimento/editar-tipo-at
 import { ExcluirTipoAtendimentoComponent } from './tipoatendimento/excluir-tipo-atendimento/excluir-tipo-atendimento.component';
 import { PainelAtendimentoComponent } from './painel-atendimento/painel-atendimento.component';
 import { EntradaVideoComponent } from './entrada-video/entrada-video.component';
+import { SafeHtmlPipe } from '../pipes/safe-html.pipe';
 
 
 
@@ -37,6 +41,7 @@ import { EntradaVideoComponent } from './entrada-video/entrada-video.component';
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        CarouselModule,
         WebcamModule,
         RouterModule.forChild(atendimentosRouterConfig),
     ],
@@ -47,8 +52,8 @@ import { EntradaVideoComponent } from './entrada-video/entrada-video.component';
         EditarTipoAtendimentoComponent,
         ExcluirTipoAtendimentoComponent,
         PainelAtendimentoComponent,
-        EntradaVideoComponent
-        
+        EntradaVideoComponent,
+        SafeHtmlPipe
     ],
     providers: [
         Title,

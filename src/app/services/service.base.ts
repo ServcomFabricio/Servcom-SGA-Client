@@ -1,19 +1,25 @@
-import { HttpHeaders } from '@angular/common/http';
-import { throwError, BehaviorSubject, config } from 'rxjs';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { throwError, BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import Config from '../../assets/config.json'
 import { environment } from '../../environments/environment';
+import { ConfigService } from 'ngx-envconfig';
+
+const config: any = require('../../assets/config/config.json');
 
 export abstract class ServiceBase {
+    protected UrlServiceV1: any;
+    protected UrlServiceV1x: any;
 
-    
-    protected UrlServiceV1:any;
-    
-    constructor(){
-        if (environment.production==true){
-            this.UrlServiceV1=Config.UrlServiceBase;
-        }else{
-            this.UrlServiceV1=Config.UrlServiceBase; //'http://localhost:58300/'
+    constructor(configService: ConfigService) {
+
+        if (environment.production == true) {
+            configService.onLoad.subscribe(() => {
+                this.UrlServiceV1 = configService.get('UrlServiceBase');
+            })
+        } else {
+            configService.onLoad.subscribe(() => {
+                this.UrlServiceV1 = configService.get('UrlServiceBase');
+            })
         }
     }
 
@@ -74,9 +80,12 @@ export abstract class ServiceBase {
 
 
 @Injectable()
-export class DataSharingService extends ServiceBase{
-    getUser=JSON.parse(this.getUser());
-    userNome:string=this.getUser==null?"":this.getUser.nome;
+export class DataSharingService extends ServiceBase {
+
+    constructor(configService: ConfigService) { super(configService) }
+
+    getUser = JSON.parse(this.getUser());
+    userNome: string = this.getUser == null ? "" : this.getUser.nome;
     public usuarioNome: BehaviorSubject<string> = new BehaviorSubject<string>(this.userNome);
 
     public menuSuperiorAtivo: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);

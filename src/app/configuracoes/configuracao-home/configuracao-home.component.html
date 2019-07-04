@@ -3,8 +3,8 @@
   <div class="form-horizontal">
 
     <div class="form-group" [ngClass]="{'has-error': displayMessage.tituloPainelAtendimento }">
-      <label class="col-md-2 control-label" for="tituloPainelAtendimento">Titulo Painel de Atendimento</label>
-      <div class="col-md-10">
+      <label class="col-md-4 control-label" for="tituloPainelAtendimento">Titulo Painel de Atendimento</label>
+      <div class="col-md-8">
         <input class="form-control" id="tituloPainelAtendimento" type="text" placeholder="Titulo (requerido)"
           formControlName="tituloPainelAtendimento" />
         <span class="text-danger" *ngIf="displayMessage.tituloPainelAtendimento">
@@ -12,7 +12,33 @@
         </span>
       </div>
     </div>
+   
+    <div class="col-md-offset-2 col-md-7 well">
+      <div class="form-group" [ngClass]="{'has-error': displayMessage.entradaVideo }">
+        <div class="col-md-offset-2 col-md-5">
+          <div class="checkbox">
+            <input type="checkbox" name="entradaVideo" id="entradaVideo" formControlName="entradaVideo">
+            <label for="entradaVideo">Ativar Entrada de Video</label>
+            <span class="text-danger" *ngIf="displayMessage.entradaVideo">
+              <p [innerHTML]="displayMessage.entradaVideo"></p>
+          </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error': displayMessage.conteudoConfigurado }">
+        <div class="col-md-offset-2 col-md-5">
+          <div class="checkbox">
+            <input type="checkbox" name="conteudoConfigurado" id="conteudoConfigurado" formControlName="conteudoConfigurado">
+            <label for="conteudoConfigurado">Ativar Conteúdo Configurado</label>
+            <span class="text-danger" *ngIf="displayMessage.conteudoConfigurado">
+              <p [innerHTML]="displayMessage.conteudoConfigurado"></p>
+          </span>
+          </div>
+        </div>
+      </div>
+    </div>  
 
+    <div class="col-md-offset-2 col-md-10" >
     <div class="form-group" [ngClass]="{'has-error': displayMessage.textoFixoPainelAtendimento }">
       <div class="basic-demo">
         <legend>{{editorTextoService.tituloEditor}}</legend>
@@ -30,6 +56,7 @@
         <a [routerLink]="['/home']" class="btn btn-primary">Voltar</a>
       </div>
     </div>
-
+  </div>
   </div>
 </form>
+

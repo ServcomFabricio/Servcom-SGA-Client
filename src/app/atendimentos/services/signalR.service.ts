@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
+
+import { ConfigService } from 'ngx-envconfig';
+
 import { ServiceBase } from 'src/app/services/service.base';
-import { HttpClient } from '@angular/common/http';
 
 import * as signalR from "@aspnet/signalr";
 import { PainelAtendimentoModel } from '../models/painelatendimento';
 
 
+
 @Injectable()
 export class SignalRService extends ServiceBase {
+
+    constructor(configService: ConfigService) { super(configService) }
 
     private hubConnection: signalR.HubConnection
     public dataResponse: PainelAtendimentoModel[] = [new PainelAtendimentoModel()];
@@ -15,7 +20,6 @@ export class SignalRService extends ServiceBase {
     interval;
     break;
     public blinkSenha: boolean = true
-    constructor() { super() }
 
     public startConnection = () => {
         this.hubConnection = new signalR.HubConnectionBuilder()

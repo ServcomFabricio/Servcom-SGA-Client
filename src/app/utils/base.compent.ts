@@ -52,8 +52,6 @@ export class BaseComponet  {
         }
     }
 
-
-
     onError(fail) {
         this.toastr.error('Ocorrer um erro no processamento', 'Atenção');
         this.errors = fail.error.errors;

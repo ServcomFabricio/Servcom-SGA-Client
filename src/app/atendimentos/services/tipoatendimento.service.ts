@@ -6,13 +6,12 @@ import { map, catchError } from 'rxjs/operators';
 
 import { ServiceBase } from 'src/app/services/service.base';
 import { TipoAtendimento } from '../models/tipoatendimento';
-
-
+import { ConfigService } from 'ngx-envconfig';
 
 @Injectable()
 export class TipoAtendimentoService extends ServiceBase {
 
-    constructor(private http: HttpClient) { super() }
+    constructor(private http: HttpClient,configService: ConfigService) { super(configService) }
 
     obterTipos(): Observable<TipoAtendimento[]> {
         return this.http
